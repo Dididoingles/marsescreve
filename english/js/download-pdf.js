@@ -99,7 +99,7 @@
     }
   </style></head><body>
     <!-- Pointing the image directly to the live site's asset -->
-    <img class="logo" src="${window.location.origin}/assets/sherlockmars.webp" alt="Sherlock">
+    <img class="logo" src="${window.location.origin}../assets/sherlockmars.webp" alt="Sherlock">
     <h1>Relatório do ajudante</h1>
     ${note.title ? `<h2>${esc(note.title)}</h2>` : ''}
     ${note.body  ? `<div class="body">${esc(note.body)}</div>` : ''}
