@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="Mars Ajudante">
+    <meta property="og:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta property="og:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+    <meta property="og:url" content="https://dididoingles.github.io/marsescreve/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mars ajudante">
+    <meta name="twitter:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta name="twitter:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+  
+    <link rel="icon" type="image/png" href="https://dididoingles.github.io/marsescreve/assets/favimars.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dididoingles.github.io/marsescreve/assets/favimars180.png">
+    <title>Mars Assistant - Start</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Shantell+Sans:wght@300;700&family=JetBrains+Mono:wght@200;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevents scrolling */
+            background-color: #fff8f8;
+            font-family: 'Poppins', sans-serif;
+            color: #352f2d;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            position: relative; /* Anchor for absolute elements */
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f100; }
+::-webkit-scrollbar-thumb { background: #8b03032a; }
+::-webkit-scrollbar-thumb:hover { background: #cc0b0b21; }
+
+        /* ==========================================
+           DESKTOP LAYOUT (Absolute Positioning)
+        ========================================== */
+        
+        .video-side {
+            position: absolute;
+            top: 50%;
+            left: 25%; 
+            transform: translate(-50%, -50%);
+            width: 55%; /* Increased width slightly to give the fade more room */
+            max-width: 750px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            /* 1. Add padding so the mask has room to fade out */
+            padding: 40px; 
+            /* 2. Intensified fade: Solid until 40%, fully transparent by 95% */
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .text-side {
+            position: absolute;
+            top: 50%;
+            right: 5%; 
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography */
+        h1.title {
+            font-family: 'Shantell Sans', 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #c20000;
+            white-space: nowrap;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            color: #352f2d;
+            text-align: left;
+            margin-bottom: 40px;
+            text-wrap: pretty;
+            max-width: 90%;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .notice {
+            font-size: 0.95rem;
+            font-weight: 300;
+            font-family: 'JetBrains Mono', monospace;
+            color: #9b9898;
+            line-height: 1.4;
+            background: #fff0f0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #c20000;
+            text-wrap: pretty;
+            letter-spacing: -0.5px;
+        }
+
+        .notice a {
+            color: #c20000;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .notice a:hover {
+            text-decoration: underline;
+        }
+
+        .start-btn {
+            display: inline-block;
+            background-color: #c4251f;
+            color: #ffffff;
+            font-family: 'Shantell Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 10px;
+            border: 2px solid #222222;
+            margin-top: 40px;
+            align-self: flex-start;
+            transition: transform 0.2s, background 0.2s;
+            letter-spacing: 0px;
+            box-shadow: 2px 3px 0 rgba(34,34,34,0.85);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #c00000;
+            transform: translateY(2px) translateX(2px);
+            box-shadow: 1px 2px 0 rgba(34,34,34,0.85);
+        }
+
+        .start-btn:active { 
+            transform: translateY(3px) translateX(2px);
+            box-shadow: 0px 0px 0 rgba(34,34,34,0.85);
+        }
+
+        /* Cascade Animation */
+        @keyframes smoothLoad {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1.title { animation: smoothLoad 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both; }
+        p.subtitle { animation: smoothLoad 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both; }
+        .notice { animation: smoothLoad 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s both; }
+        .start-btn { animation: smoothLoad 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.8s both; }
+
+        /* ==========================================
+           MOBILE & TABLET LAYOUT (Absolute Positioning)
+        ========================================== */
+        @media (max-width: 1024px) {
+            html, body {
+                overflow: auto; 
+            }
+
+            .video-side {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 100%;
+                margin: 50px auto 0 auto;
+                padding: 0 20px;
+            }
+
+            .video-wrapper {
+                max-width: 450px; 
+                margin: 0 auto;
+                padding: 0px; /* Smaller padding for mobile */
+                /* Intensified fade for mobile */
+                -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+                mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+            }
+
+            .text-side {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 100%;
+                max-width: 100%;
+                padding: 0 24px;
+                margin-top: 10px; 
+                align-items: center;
+                text-align: center;
+            }
+
+            h1.title {
+                font-size: 2.5rem;
+                white-space: normal;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            p.subtitle {
+                font-size: 0.9rem;
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+
+            .notice {
+                font-size: 0.7rem;
+                text-align: left;
+                width: 100%;
+            }
+
+            .start-btn {
+                width: 100%;
+                text-align: center;
+                margin-top: 25px;
+                align-self: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1.title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video -->
+    <div class="video-side">
+        <div class="video-wrapper">
+            <video 
+                src="https://dididoingles.github.io/lab/assets/sherlockmars2.mp4" 
+                autoplay 
+                muted 
+                playsinline 
+                disablepictureinpicture 
+                controlsList="nodownload noplaybackrate"
+                id="splashVideo">
+            </video>
+        </div>
+    </div>
+
+    <!-- Text Content -->
+    <div class="text-side">
+        <h1 class="title">Mars Assistant</h1>
+        
+        <p class="subtitle">
+            Escreva em inglês o que você sabe; para o que não souber, basta escrever em português, e o Mars encontrará a melhor tradução para aquele contexto específico.
+        </p>
+
+        <div class="notice">
+            Observação: esta ferramenta utiliza IA para reconstruir o sentido e o <a href="https://languagetool.org" target="_blank">Language Tool</a> para verificar a ortografia. Recomendamos o uso no computador; a versão para dispositivos móveis ainda está em fase de testes.
+        </div>
+
+        <a href="english/" class="start-btn">Começar a escrever</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('splashVideo');
+            if (video) {
+                video.play().catch(error => {
+                    console.log("Autoplay was prevented by the browser:", error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
