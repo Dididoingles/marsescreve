@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Mars Ajudante">
+    <meta property="og:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta property="og:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+    <meta property="og:url" content="https://dididoingles.github.io/marsescreve/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mars ajudante">
+    <meta name="twitter:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta name="twitter:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+  
+    <link rel="icon" type="image/png" href="https://dididoingles.github.io/marsescreve/assets/favimars.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dididoingles.github.io/marsescreve/assets/favimars180.png">
+    <title>Ajuda- Ajudante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Shantell+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff8f8;
+            color: #352f2d;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f100; }
+::-webkit-scrollbar-thumb { background: #8b03032a; }
+::-webkit-scrollbar-thumb:hover { background: #cc0b0b21; }
+        
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            background: #ffffff00;
+            padding: 40px;
+            border-radius: 16px;
+            
+            
+        }
+        
+        h1 {
+            font-family: 'Shantell Sans', 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            color: #c20000;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #9b9898;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #352f2d;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f0eaea;
+            line-height: 1.3;
+        }
+        
+        p {
+            font-size: 15px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: #352f2d;
+        }
+        
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        li {
+            font-size: 15px;
+            font-weight: 300;
+            margin-bottom: 8px;
+            color: #352f2d;
+        }
+        
+        strong {
+            font-weight: 700;
+            color: #352f2d;
+        }
+        
+        .highlight {
+            background: #fff0f0;
+            border-left: 3px solid #c20000;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #f0eaea;
+            text-align: center;
+            font-size: 13px;
+            color: #9b9898;
+        }
+        
+        a {
+            color: #c20000;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 📱 MOBILE OPTIMIZATIONS */
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px; /* Reduz a margem externa */
+            }
+            .container {
+                padding: 24px 20px; /* Reduz o padding interno */
+                border-radius: 12px;
+                border-top-width: 3px;
+            }
+            h1 {
+                font-size: 24px; /* Fonte principal menor */
+            }
+            .subtitle {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 17px;
+                margin-top: 24px;
+                margin-bottom: 10px;
+            }
+            p, li {
+                font-size: 14px; /* Texto de leitura menor e mais confortável */
+            }
+            .highlight {
+                padding: 12px 16px;
+                font-size: 13.5px;
+                margin: 16px 0;
+            }
+            ul {
+                padding-left: 16px; /* Recua um pouco a lista */
+            }
+            .footer {
+                margin-top: 30px;
+                padding-top: 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Aprenda a usar</h1>
+        <p class="subtitle">Última atualização: Novembro de 2026</p>
+
+        <p>Bem-vindo ao <strong>Ajudante</strong>. Esta ferramenta foi criada para ajudar estudantes a praticar a escrita em inglês, identificando palavras em português e sugerindo correções. Funciona assim: escreva o que você sabe em Inglês, o restante escreva em português mesmo. A ferramenta vai identificar o contexto e trazer a melhor tradução para esse fim. Basta clicar em <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></p>
+
+       
+        <h2>Ícones da barra de tarefas</h2>
+        <p>Cada um dos ícones da barra faz uma ação diferente. </p>
+        
+        <h2><i class="fa-solid fa-download" aria-hidden="true"></i> Download</h2>
+        <p> Prepara e faz o download da página em PDF ou a impressão em papel. 
+            Se o texto estiver destacado (selecionado e com cor), o arquivo o reconhece como "Vocabulário novo" e separa para você estudar depois.
+        <ul></p>
+
+        </ul>
+
+        <h2><i class="fa-solid fa-headphones" aria-hidden="true"></i> Ouvir pronúncia</h2>
+        <p>Toda vez que esse simbolo aparece <i class="fa-solid fa-headphones" aria-hidden="true"></i> basta clicar nele para ouvir a pronúncia do trecho, palavra ou texto inteiro.</p>
+
+        <h2><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Corrigir gramática</h2>
+        <p>Toda vez que esse simbolo aparece <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> basta clicar nele para corrigir a gramática, seja da palavra, frase ou texto inteiro.</p>
+
+        <h2><i class="fa-solid fa-trash" aria-hidden="true"></i> Limpar</h2>
+        <p>Esse botão limpa o texto todo e começa do zero.</p>
+
+        <div class="highlight">
+            <strong><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Termos de uso</strong><br>
+            Esse botão te ajuda a entender como tratamos seus dados e quem está por trás da ferramenta. 
+            
+        </div>
+
+       
+
+        <h2><i class="fa-brands fa-instagram" aria-hidden="true"></i> Contato</h2>
+        <p>Se você tiver qualquer dúvida sobre estes termos, entre em contato pelo Instagram: <a href="https://www.instagram.com/dicarvalho.prof/" target="_blank">@dicarvalho.prof</a>.</p>
+
+        <div class="footer">
+            <p>Ao continuar usando o Ajudante, você concorda com estes termos.</p>
+            <p style="margin-top: 5px;"><a href="../">Voltar para o Ajudante</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
