@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Mars Ajudante">
+    <meta property="og:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta property="og:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+    <meta property="og:url" content="https://dididoingles.github.io/marsescreve/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mars ajudante">
+    <meta name="twitter:description" content="Escreva misturando os idiomas, o mars te ajuda a traduzir.">
+    <meta name="twitter:image" content="https://dididoingles.github.io/marsescreve/assets/metaassist.png">
+  
+    <link rel="icon" type="image/png" href="https://dididoingles.github.io/marsescreve/assets/favimars.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dididoingles.github.io/marsescreve/assets/favimars180.png">
+
+  <title>Ajudante</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Shantell+Sans:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <aside class="sidebar sidebar-left">
+    <div class="left-icons">
+      <div class="mars-icon">
+        <img src="../assets/marsicon.png" alt="mars icon" class="hidden" id="marsIcon">
+      </div>
+      <div class="left-icons-track">
+        <button class="icon-btn" aria-label="Download PDF" onclick="downloadReport()"><i class="fas fa-download"></i></button>
+        <button class="icon-btn" aria-label="Headphones" onclick="openTTS()"><i class="fa-solid fa-headphones"></i></button>
+        <button class="icon-btn" aria-label="Translate" onclick="runAiTranslation()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn" aria-label="Spellcheck" onclick="runGrammarCheck()"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        <button class="icon-btn" aria-label="Clear text" onclick="clearEditorText()"><i class="fas fa-trash"></i></button>
+        <a class="icon-btn" aria-label="Clear text" href="../help/"><i class="fa-solid fa-lightbulb"></i></a>
+        <a class="icon-btn" aria-label="Clear text" href="../terms/"><i class="fa-solid fa-scale-balanced"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="text-area-wrapper">
+    <div class="text-container">
+      <div class="note-title placeholder" contenteditable="true" spellcheck="false"
+           data-placeholder="This is my first note">This is my first note</div>
+      <div class="note-body placeholder" contenteditable="true" spellcheck="false"
+           data-placeholder="I write about the things that me inspiram">I write about the things that me inspiram</div>
+    </div>
+
+    <div class="floating-panel" id="selectionPanel">
+      <div class="color-row">
+        <div class="color-dot dot-green" data-color="#7ad0a0"></div>
+        <div class="color-dot dot-teal" data-color="#4bc0c0"></div>
+        <div class="color-dot dot-yellow" data-color="#f9d56e"></div>
+        <div class="color-dot dot-orange" data-color="#f9b16e"></div>
+        <div class="color-dot dot-pink" data-color="#ee6b9e"></div>
+        <div class="color-dot dot-purple" data-color="#b481dc"></div>
+        <div class="color-dot dot-white" data-color="transparent"></div>
+      </div>
+      <div class="action-row">
+        <button class="action-btn" onclick="runAiTranslation()"><i class="fa-solid fa-magnifying-glass"></i> Identificar palavras novas</button>
+        <span class="action-separator"></span>
+        <button class="action-btn" onclick="runGrammarCheck({ textToCheck: getSelectedText() })"><i class="fa-solid fa-wand-magic-sparkles"></i> Verificar ortografia</button>
+      </div>
+    </div>
+  </div>
+
+  <aside class="sidebar sidebar-right" id="rightSidebar">
+    <div class="floating-top-right">
+      <img src="../assets/sherlockmars.webp" alt="sherlock mars" class="hidden" id="sherlockImg">
+    </div>
+
+    <button class="close-drawer" onclick="closeAssistantPanel()"><i class="fas fa-times"></i></button>
+
+    <div class="drawer-content" id="drawerContent">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          Opinião do ajudante <i class="fa-solid fa-pen-to-square"></i>
+        </div>
+      </div>
+      <div class="drawer-text" id="drawerBody">
+        Use o botão de verificação para checar a gramática do seu texto.
+      </div>
+    </div>
+
+    <div class="floating-bottom-right">
+      <a href="https://www.instagram.com/dicarvalho.prof/" target="_blank">@dicarvalho.prof</a>
+    </div>
+  </aside>
+
+  <div class="mobile-modal-overlay" id="mobileModalOverlay">
+    <div class="mobile-modal" id="mobileModal">
+      <button class="close-drawer" onclick="closeAssistantPanel()"><i class="fas fa-times"></i></button>
+      <div class="drawer-content">
+        <div class="drawer-header">
+          <div class="drawer-title">
+            Opinião do ajudante <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+        </div>
+        <div class="drawer-text" id="drawerBodyMobile">
+          Use o botão de verificação para checar a gramática do seu texto.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tts-desktop-overlay" id="ttsDesktopOverlay">
+    <div class="tts-desktop-card">
+      <button class="tts-close" data-tts-close aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="tts-wave" data-tts-wave>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="tts-speed" data-tts-speed>1.0x</div>
+
+      <input class="tts-range" data-tts-range type="range" min="0.5" max="2" step="0.1" value="1.0">
+
+      <div class="tts-controls">
+        <button class="tts-icon-btn" data-tts-slower aria-label="Slower"><i class="fas fa-backward"></i></button>
+        <button class="tts-icon-btn tts-play-btn" data-tts-play aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+        <button class="tts-icon-btn" data-tts-faster aria-label="Faster"><i class="fas fa-forward"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tts-mobile-overlay" id="ttsMobileOverlay">
+    <div class="tts-mobile-pill">
+      <button class="tts-close" data-tts-close aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="tts-wave-wrap">
+        <div class="tts-wave" data-tts-wave>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="tts-right">
+        <div class="tts-speed" data-tts-speed>1.0x</div>
+        <input class="tts-range" data-tts-range type="range" min="0.5" max="2" step="0.1" value="1.0">
+        <div class="tts-controls">
+          <button class="tts-icon-btn" data-tts-slower aria-label="Slower"><i class="fas fa-backward"></i></button>
+          <button class="tts-icon-btn tts-play-btn" data-tts-play aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+          <button class="tts-icon-btn" data-tts-faster aria-label="Faster"><i class="fas fa-forward"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tts-toast" id="ttsToast"></div>
+
+    <!-- CLEAR TEXT CONFIRMATION MODAL -->
+    <div class="clear-modal-overlay" id="clearModalOverlay">
+        <div class="clear-modal">
+          <div class="clear-modal-icon"><i class="fas fa-trash"></i></div>
+          <h2 class="clear-modal-title">Tem certeza?</h2>
+          <p class="clear-modal-text">Isso apagará todo o seu texto. Essa ação não pode ser desfeita.</p>
+          <div class="clear-modal-actions">
+            <button class="clear-btn-cancel" id="clearModalCancel">Cancelar</button>
+            <button class="clear-btn-confirm" id="clearModalConfirm">Sim, apagar</button>
+          </div>
+        </div>
+      </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script src="js/script.js"></script>
+  <script src="js/clear-text.js"></script>
+  <script src="js/download-pdf.js"></script>
+  <script src="js/integration.js"></script>
+
+</body>
+</html>
